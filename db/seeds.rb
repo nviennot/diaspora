@@ -47,6 +47,7 @@ puts "done!"
 
 
 require 'sidekiq/testing/inline'
+require Rails.root.join('spec', 'support', 'inlined_jobs')
 require Rails.root.join('spec', 'support', 'user_methods')
 
 print "Seeding post data..."

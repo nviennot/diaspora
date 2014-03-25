@@ -3,6 +3,9 @@
 #   the COPYRIGHT file.
 
 class Aspect < ActiveRecord::Base
+  include Promiscuous::Publisher
+  publish :name, :user_id
+
   belongs_to :user
 
   has_many :aspect_memberships, :dependent => :destroy

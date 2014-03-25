@@ -6,6 +6,9 @@ class ShareVisibility < ActiveRecord::Base
   belongs_to :contact
   belongs_to :shareable, :polymorphic => :true
 
+  include Promiscuous::Publisher
+  publish :shareable_id, :shareable_type, :contact_id, :hidden
+
   scope :for_a_users_contacts, lambda { |user|
     where(:contact_id => user.contacts.map {|c| c.id})
   }

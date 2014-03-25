@@ -34,7 +34,7 @@ gem 'rack-cors', '0.2.8', :require => 'rack/cors'
 
 # Database
 
-ENV['DB'] ||= 'mysql'
+ENV['DB'] ||= 'postgres'
 
 gem 'mysql2', '0.3.14' if ENV['DB'] == 'all' || ENV['DB'] == 'mysql'
 gem 'pg',     '0.17.1' if ENV['DB'] == 'all' || ENV['DB'] == 'postgres'
@@ -216,4 +216,7 @@ group :development, :test do
   # Jasmine (client side application tests (JS))
   gem 'jasmine', '1.3.2'
   gem 'sinon-rails',	    '1.7.3'
+  gem 'pry'
 end
+
+gem 'promiscuous', path: '~/promiscuous'

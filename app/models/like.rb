@@ -13,6 +13,9 @@ class Like < Federated::Relayable
     end
   end
 
+  include Promiscuous::Publisher
+  publish :positive, :target_id, :target_type, :author_id, :guid
+
   after_commit :on => :create do
     self.parent.update_likes_counter
   end

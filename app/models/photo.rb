@@ -6,6 +6,11 @@ class Photo < ActiveRecord::Base
   include Diaspora::Federated::Shareable
   include Diaspora::Commentable
   include Diaspora::Shareable
+  include Promiscuous::Publisher
+
+  publish :author_id, :public, :diaspora_handle,
+          :remote_photo_path, :remote_photo_name,
+          :guid, :status_message_guid
 
   # NOTE API V1 to be extracted
   acts_as_api

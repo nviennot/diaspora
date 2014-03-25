@@ -3,6 +3,9 @@
 #   the COPYRIGHT file.
 
 class Contact < ActiveRecord::Base
+  include Promiscuous::Publisher
+  publish :user_id, :person_id, :sharing, :receiving
+
   belongs_to :user
 
   belongs_to :person

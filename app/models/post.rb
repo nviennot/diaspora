@@ -11,6 +11,8 @@ class Post < ActiveRecord::Base
   include Diaspora::Commentable
   include Diaspora::Shareable
 
+  include Promiscuous::Publisher
+  publish :author_id, :public, :diaspora_handle, :guid, :text
 
   has_many :participations, :dependent => :delete_all, :as => :target
 

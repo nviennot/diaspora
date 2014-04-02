@@ -15,6 +15,8 @@ require 'factory_girl_rails'
 require Rails.root.join('spec', 'helper_methods')
 include HelperMethods
 
+Promiscuous.context do
+
 alice = FactoryGirl.create(:user_with_aspect, :username => "alice", :password => 'evankorth')
 bob   = FactoryGirl.create(:user_with_aspect, :username => "bob", :password => 'evankorth')
 eve   = FactoryGirl.create(:user_with_aspect, :username => "eve", :password => 'evankorth')
@@ -71,3 +73,4 @@ puts " done!"
 
 puts "Successfully seeded the db with users eve, bob, and alice (password: 'evankorth')"
 puts ""
+end

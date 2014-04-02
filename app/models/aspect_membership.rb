@@ -3,6 +3,8 @@
 #   the COPYRIGHT file.
 
 class AspectMembership < ActiveRecord::Base
+  include Promiscuous::Publisher
+  publish :aspect_id, :contact_id
 
   belongs_to :aspect
   belongs_to :contact

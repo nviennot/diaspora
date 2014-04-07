@@ -49,6 +49,7 @@ class StatusMessagesController < ApplicationController
     @status_message.build_location(:address => params[:location_address], :coordinates => params[:location_coords]) if params[:location_address].present?
     @status_message.attach_photos_by_ids(params[:photos])
 
+    ActiveRecord::Base.transaction do
     if @status_message.save
       aspects = current_user.aspects_from_ids(destination_aspect_ids)
       current_user.add_to_streams(@status_message, aspects)
@@ -78,6 +79,7 @@ class StatusMessagesController < ApplicationController
         format.mobile { redirect_to stream_path }
         format.json { render :nothing => true , :status => 403 }
       end
+    end
     end
   end
 

@@ -54,7 +54,7 @@ require Rails.root.join('spec', 'support', 'user_methods')
 
 print "Seeding post data..."
 time_interval = 1000
-(1..23).each do |n|
+(1..2).each do |n|
   [alice, bob, eve].each do |u|
     print '.'
     if(n%2==0)

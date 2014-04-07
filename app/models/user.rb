@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   include Querying
   include SocialActions
 
+  include Promiscuous::Publisher
+  publish :username, :email, :current_sign_in_at
+
   apply_simple_captcha :message => I18n.t('simple_captcha.message.failed'), :add_to_base => true
 
   scope :logged_in_since, lambda { |time| where('last_sign_in_at > ?', time) }

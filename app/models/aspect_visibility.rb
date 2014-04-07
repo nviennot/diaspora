@@ -3,6 +3,8 @@
 #   the COPYRIGHT file.
 
 class AspectVisibility < ActiveRecord::Base
+  include Promiscuous::Publisher
+  publish :aspect_id, :shareable_id, :shareable_type
 
   belongs_to :aspect
   validates :aspect, :presence => true

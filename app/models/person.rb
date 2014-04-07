@@ -6,8 +6,8 @@ class Person < ActiveRecord::Base
   include ROXML
   include Encryptor::Public
   include Diaspora::Guid
-  include Promiscuous::Publisher
 
+  include Promiscuous::Publisher
   publish :guid, :url, :diaspora_handle, :owner_id
 
   # NOTE API V1 to be extracted

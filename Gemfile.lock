@@ -1,5 +1,7 @@
-PATH
-  remote: ~/promiscuous
+GIT
+  remote: git://github.com/nviennot/promiscuous.git
+  revision: 787f40835ded9fe988af9a42f71692b64ce22658
+  branch: master
   specs:
     promiscuous (0.91.0)
       activemodel (>= 3)
@@ -67,7 +69,7 @@ GEM
     bootstrap-sass (2.2.2.0)
       sass (~> 3.2)
     builder (3.0.4)
-    bunny (1.1.8)
+    bunny (1.2.1)
       amq-protocol (>= 1.9.2)
     capybara (2.2.1)
       mime-types (>= 1.16)

@@ -219,4 +219,4 @@ group :development, :test do
   gem 'pry'
 end
 
-gem 'promiscuous', path: '~/promiscuous'
+gem 'promiscuous', github: 'nviennot/promiscuous', branch: 'master'

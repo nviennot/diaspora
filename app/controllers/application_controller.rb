@@ -4,7 +4,7 @@
 
 class ApplicationController < ActionController::Base
   has_mobile_fu
-  protect_from_forgery :except => :receive
+  # protect_from_forgery :except => :receive
 
   before_filter :ensure_http_referer_is_set
   before_filter :set_locale

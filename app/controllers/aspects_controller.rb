@@ -9,19 +9,31 @@ class AspectsController < ApplicationController
              :js,
              :json
 
+  def index
+    respond_to do |format|
+      format.json { render :json => current_user.aspects.to_json }
+    end
+  end
+
   def create
     @aspect = current_user.aspects.build(aspect_params)
     aspecting_person_id = params[:aspect][:person_id]
 
     if @aspect.save
-      flash[:notice] = I18n.t('aspects.create.success', :name => @aspect.name)
 
-      if current_user.getting_started || request.referer.include?("contacts")
-        redirect_to :back
-      elsif aspecting_person_id.present?
-        connect_person_to_aspect(aspecting_person_id)
-      else
-        redirect_to contacts_path(:a_id => @aspect.id)
+      respond_to do |format|
+        format.json { render :json => @aspect.to_json }
+        format.html do
+          flash[:notice] = I18n.t('aspects.create.success', :name => @aspect.name)
+          if current_user.getting_started || request.referer.include?("contacts")
+            redirect_to :back
+          elsif aspecting_person_id.present?
+            connect_person_to_aspect(aspecting_person_id)
+          else
+            redirect_to contacts_path(:a_id => @aspect.id)
+          end
+        end
+
       end
     else
       respond_to do |format|

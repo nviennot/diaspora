@@ -9,7 +9,10 @@ class User < ActiveRecord::Base
   include SocialActions
 
   include Promiscuous::Publisher
+  include Promiscuous::Subscriber
   publish :username, :email, :current_sign_in_at
+  subscribe :topics, :from => 'diaspora'
+  serialize :topics
 
   apply_simple_captcha :message => I18n.t('simple_captcha.message.failed'), :add_to_base => true
 
